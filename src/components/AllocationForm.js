@@ -1,12 +1,13 @@
 import React, { useContext, useState } from 'react';
 import { AppContext } from '../context/AppContext';
-
+const tab = '\u00A0';
 const AllocationForm = (props) => {
-    const { dispatch,remaining  } = useContext(AppContext);
+    const { dispatch, remaining, Currency  } = useContext(AppContext);
 
     const [name, setName] = useState('');
     const [cost, setCost] = useState('');
     const [action, setAction] = useState('');
+    
 
     const submitEvent = () => {
 
@@ -55,19 +56,24 @@ const AllocationForm = (props) => {
                 <label className="input-group-text" htmlFor="inputGroupSelect02">Allocation</label>
                   </div>
                   <select className="custom-select" id="inputGroupSelect02" onChange={(event) => setAction(event.target.value)}>
-                        <option defaultValue value="Add" name="Add">Add</option>
+                        <option defaultValue value="Add" name="Add">Add</option>             
                 <option value="Reduce" name="Reduce">Reduce</option>
+                
                   </select>
-
+                  <span>{tab}{tab}{tab}{tab}</span>
+                  <span>{tab}{tab}{tab}{tab}</span>
+                  <span>{tab}{tab}</span>
+                  <span>{Currency}</span>
+                  <span>{tab}{tab}</span>
                     <input
                         required='required'
                         type='number'
                         id='cost'
                         value={cost}
-                        style={{ marginLeft: '2rem' , size: 10}}
+                        style={{ marginLeft: '0rem' , size: 10}}
                         onChange={(event) => setCost(event.target.value)}>
                         </input>
-
+                    
                     <button className="btn btn-primary" onClick={submitEvent} style={{ marginLeft: '2rem' }}>
                         Save
                     </button>
